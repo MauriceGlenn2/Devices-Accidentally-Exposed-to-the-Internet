@@ -1,4 +1,4 @@
-# Devices-Accidentally-Exposed-to-the-Internet
+# (WIP) Devices-Accidentally-Exposed-to-the-Internet
 Devices Accidentally Exposed to the Internet (Threat Hunt)
 
 
@@ -88,14 +88,3 @@ This project simulates an incident response scenario where virtual machines (VMs
   - **Could the attack have been prevented?**
   - **How can the investigation process be optimized?**
 
----
-
-## Sample Queries
-### Check most failed logins:
-```kusto
-DeviceLogonEvents
-| where LogonType has_any("Network", "Interactive", "RemoteInteractive", "Unlock")
-| where ActionType == "LogonFailed"
-| where isnotempty(RemoteIP)
-| summarize Attempts = count() by ActionType, RemoteIP, DeviceName
-| order by Attempts
