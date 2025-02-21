@@ -11,8 +11,7 @@ This project simulates an incident response scenario where virtual machines (VMs
 
 ## Prerequisites
 - A VM onboarded to **Microsoft Defender for Endpoint (MDE)**.
-- The VM should remain active for **90 minutes** to attract potential threats from malicious actors and bots.
-- Alternatively, use the pre-existing honeypot VM: **windows-target-1**.
+- The VM was running for 12+ hours to produce logs.
 
 ---
 
@@ -28,14 +27,20 @@ This project simulates an incident response scenario where virtual machines (VMs
 
 ## 2. Data Collection
 **Goal:** Gather relevant data from logs, network traffic, and endpoints.
+  - ### Which devices were exposed to the internet?
+    The EDR-test-vm has been internet facing for Feb 19th 12:07pm to Feb 20th 1:12am
+ ![image](https://github.com/user-attachments/assets/087cd60b-3257-4767-8f55-5d356f5f7d57)
 
-- Analyze logs to determine:
-  - Which devices were exposed to the internet.
-  - Excessive failed login attempts.
-  - Source IP addresses and frequency of login failures.
-- Ensure logs are available from key sources:
-  - `DeviceInfo`
-  - `DeviceLogonEvents`
+    
+  - ### Excessive failed login attempts? Source IP addresses and frequency of login failures?
+      ![image](https://github.com/user-attachments/assets/c59d825a-ef3d-4a89-b900-db30c237d57d)
+
+    ### After locating the bad actor's IP addresses I ran a query to check to see if there were any successful logins
+    ![image](https://github.com/user-attachments/assets/18b6fb9f-dba1-4de6-88fe-0e9f10315bdf)
+
+
+
+
 
 ---
 
