@@ -38,6 +38,10 @@ This project simulates an incident response scenario where virtual machines (VMs
     ### After locating the bad actor's IP addresses I ran a query to check to see if there were any successful logins
     ![image](https://github.com/user-attachments/assets/18b6fb9f-dba1-4de6-88fe-0e9f10315bdf)
 
+    ### Checking correct user name and failed log in attempts, indication if bad actor has the right account name
+    ![image](https://github.com/user-attachments/assets/72e043ca-213d-40be-8f7c-94c5f9c3f915)
+
+
 
 
 
