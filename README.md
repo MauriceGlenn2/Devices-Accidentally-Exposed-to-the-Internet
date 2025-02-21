@@ -28,7 +28,7 @@ This project simulates an incident response scenario where virtual machines (VMs
 ## 2. Data Collection
 **Goal:** Gather relevant data from logs, network traffic, and endpoints.
   - ### Which devices were exposed to the internet?
-    The EDR-test-vm has been internet facing for Feb 19th 12:07pm to Feb 20th 1:12am
+    The EDR-test-vm was internet facing at this time: Feb 19th 12:07pm to Feb 20th 1:12am
  ![image](https://github.com/user-attachments/assets/087cd60b-3257-4767-8f55-5d356f5f7d57)
 
     
