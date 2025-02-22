@@ -15,17 +15,7 @@ This project simulates an incident response scenario where virtual machines (VMs
 
 ---
 
-## 1. Preparation
-**Goal:** Define the scope of the security investigation.
-
-- Investigate any misconfigured VMs within the shared services cluster (DNS, Domain Services, DHCP, etc.).
-- Identify brute-force login attempts from external sources.
-- Formulate a hypothesis based on potential attack vectors, e.g., **"Could there be lateral movement in the network?"**
-- Consider older devices without account lockout policies, which may have been exploited via brute-force attacks.
-
----
-
-## 2. Data Collection
+## Data Collection
 **Goal:** Gather relevant data from logs, network traffic, and endpoints.
   - ### Which devices were exposed to the internet?
     The EDR-test-vm was internet facing at this time: Feb 19th 12:07pm to Feb 20th 1:12am
@@ -42,58 +32,26 @@ This project simulates an incident response scenario where virtual machines (VMs
     ![image](https://github.com/user-attachments/assets/72e043ca-213d-40be-8f7c-94c5f9c3f915)
 
 
-
+    ### Checked all successful login IP addresses for the labuser to see if any of them were unusual or from an un expected location. All were normal
+    <img width="794" alt="image" src="https://github.com/user-attachments/assets/d3f91b7f-2f70-4e14-8491-0f11034814e7" />
 
 
 
 ---
 
-## 3. Data Analysis
-**Goal:** Identify anomalies, patterns, and potential Indicators of Compromise (IoCs).
 
-- Look for evidence of **brute-force login success** (multiple failed attempts followed by a successful login).
-- Investigate further activity on compromised machines.
-- Identify whether unauthorized users gained access.
+## **MITRE ATT&CK Techniques Identified:**
 
----
+- **T1110 – Brute Force**
+  - *Sub-technique: T1110.001 – Password Guessing*
 
-## 4. Investigation
-**Goal:** Assess the scope of the detected threats.
-
-- Examine suspicious findings in relation to **MITRE ATT&CK Tactics, Techniques, and Procedures (TTPs)**.
-- Use external threat intelligence sources and logs to confirm indicators of compromise.
-- Reference available MITRE ATT&CK documentation:
-  - [MITRE ATT&CK Framework](https://attack.mitre.org/)
+**Context:**
+- Device accidentally exposed to the Internet allowed remote login attempts.
+- Logs indicate excessive failed logins and subsequent verification of source IPs and user accounts.
 
 ---
-
-## 5. Response
-**Goal:** Contain, remove, and recover from the threat.
-
-- Work with security teams to **isolate** affected systems.
-- Implement **remediation steps** to prevent further exploitation.
-- Identify security misconfigurations and apply necessary patches.
-
----
-
-## 6. Documentation
-**Goal:** Record all findings and lessons learned.
-
-- Document:
-  - **Initial findings**
-  - **Investigative steps taken**
-  - **Actions performed**
-  - **Root cause analysis**
-- Use findings to improve future security hunts.
-
----
-
-## 7. Improvement
-**Goal:** Enhance security posture for future threat detection.
-
-- Identify security gaps and refine detection methods.
-- Implement **better access control** and **logging policies**.
-- Evaluate:
-  - **Could the attack have been prevented?**
-  - **How can the investigation process be optimized?**
+# Response Actions:
+- Hardened the NSG attached to EDR-Test-Vm to allow only RDP traffic from specific endpoints (no public internet access)
+- Implemented account lockout policy
+- Implemented MFA 
 
